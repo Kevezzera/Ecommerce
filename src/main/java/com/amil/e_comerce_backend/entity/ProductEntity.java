@@ -1,0 +1,42 @@
+package com.amil.e_comerce_backend.entity;
+
+import com.amil.e_comerce_backend.DTO.ProductDTO;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.beans.BeanUtils;
+
+@Setter
+@Getter
+@NoArgsConstructor
+@Entity
+public class ProductEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @Column(name = "NAME", nullable = false, length = (100))
+    private String name;
+
+    @Column(name = "VALUE", nullable = false, length = (100))
+    private double value;
+
+    @Column(name = "RESALE", nullable = false, length = (100))
+    private double resaleValue;
+
+    @Column(name = "DESCRIPTION", nullable = false, length = (300))
+    private String description;
+
+    public ProductEntity(ProductDTO product){
+            BeanUtils.copyProperties(product, this);
+}
+
+// LIGACOES //
+// ManyToMany whith Customer = Sale/Cart
+// ManyToMany whith Customer = Favorites
+// ManyToMany whith Tags = TagsProducts
+// ManyToMany whith Category = CategoryProduct
+}
+
