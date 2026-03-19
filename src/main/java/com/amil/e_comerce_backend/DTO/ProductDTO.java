@@ -3,7 +3,7 @@ package com.amil.e_comerce_backend.DTO;
 import org.springframework.beans.BeanUtils;
 
 public class ProductDTO {
-    private long id;
+    private Long id;
     private String name;
     private double value;
     private double resaleValue;

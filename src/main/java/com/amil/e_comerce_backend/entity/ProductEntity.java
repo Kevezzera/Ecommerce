@@ -18,7 +18,7 @@ public class ProductEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @Column(name = "NAME", nullable = false, length = (100))
     private String name;
     @Column(name = "QUANTITY", nullable = false, length = (100))
@@ -35,7 +35,7 @@ public class ProductEntity {
 }
 
 // LIGACOES //
-    @OneToMany(mappedBy = "PRODUCT_ENTITY", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<VendasEntity> vendas;
 }
 

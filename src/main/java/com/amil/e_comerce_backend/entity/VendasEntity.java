@@ -20,7 +20,7 @@ public class VendasEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     @Column(nullable = false, length = (20))
     private LocalDate data;
     @Column(nullable = false, length = (20))
@@ -34,10 +34,10 @@ public class VendasEntity {
 
     //LIGACOES
     @ManyToOne
-    @JoinColumn(name = "id_product", nullable = false) //Coluna que recebe a chave estrngeira
+    @JoinColumn(name = "product_id", nullable = false) //Coluna que recebe a chave estrngeira
     private ProductEntity product;
 
     @ManyToOne
-    @JoinColumn(name = "id_client", nullable = false)
+    @JoinColumn(name = "vendas_id", nullable = false)
     private ClientEntity client;
 }

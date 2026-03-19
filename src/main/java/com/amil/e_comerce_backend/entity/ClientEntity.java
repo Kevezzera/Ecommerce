@@ -19,7 +19,7 @@ public class ClientEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @Column(name = "first_name", nullable = false, length = (150))
     private String firstName;
     @Column(name = "last_name",nullable = false, length = (150))
@@ -40,6 +40,6 @@ public class ClientEntity {
     }
 
     //LIGACOES
-    @OneToMany(mappedBy = "clientee", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<VendasEntity> vendas;
 }
