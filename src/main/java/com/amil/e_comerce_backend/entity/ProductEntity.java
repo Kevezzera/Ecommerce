@@ -20,6 +20,9 @@ public class ProductEntity {
     @Column(name = "NAME", nullable = false, length = (100))
     private String name;
 
+    @Column(name = "QUANTITY", nullable = false, length = (100))
+    private int quantity;
+
     @Column(name = "VALUE", nullable = false, length = (100))
     private double value;
 
