@@ -13,21 +13,21 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @Entity
-@Table(name = "PRODUCT_ENTITY")
+@Table(name = "PRODUCT")
 public class ProductEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "NAME", nullable = false, length = (100))
+    @Column(nullable = false, length = (100))
     private String name;
-    @Column(name = "QUANTITY", nullable = false, length = (100))
+    @Column(nullable = false, length = (100))
     private int quantity;
-    @Column(name = "VALUE", nullable = false, length = (100))
+    @Column(nullable = false, length = (100))
     private double value;
-    @Column(name = "RESALE", nullable = false, length = (100))
+    @Column(nullable = false, length = (100))
     private double resaleValue;
-    @Column(name = "DESCRIPTION", nullable = false, length = (300))
+    @Column(nullable = false, length = (300))
     private String description;
 
     public ProductEntity(ProductDTO product){

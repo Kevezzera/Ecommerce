@@ -15,11 +15,11 @@ import java.util.List;
 @Setter
 @Getter
 @NoArgsConstructor
-@Table(name = "VENDAS_ENTITY")
+@Table(name = "VENDAS")
 public class VendasEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false, length = (20))
     private LocalDate data;
