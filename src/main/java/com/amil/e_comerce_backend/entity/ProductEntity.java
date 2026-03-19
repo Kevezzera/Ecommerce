@@ -1,6 +1,6 @@
 package com.amil.e_comerce_backend.entity;
 
-import com.amil.e_comerce_backend.DTO.ProductDTO;
+import com.amil.e_comerce_backend.dto.ProductDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

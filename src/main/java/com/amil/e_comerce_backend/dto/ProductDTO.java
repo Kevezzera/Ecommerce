@@ -1,4 +1,4 @@
-package com.amil.e_comerce_backend.DTO;
+package com.amil.e_comerce_backend.dto;
 
 import org.springframework.beans.BeanUtils;
 

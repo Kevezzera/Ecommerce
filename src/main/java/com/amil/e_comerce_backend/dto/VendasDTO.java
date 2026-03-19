@@ -1,4 +1,4 @@
-package com.amil.e_comerce_backend.DTO;
+package com.amil.e_comerce_backend.dto;
 
 import com.amil.e_comerce_backend.entity.VendasEntity;
 import lombok.Getter;
@@ -18,7 +18,7 @@ public class VendasDTO {
     private LocalTime hora;
     private String status;
 
-    private VendasDTO(VendasEntity vendas){
+    public VendasDTO(VendasEntity vendas){
         BeanUtils.copyProperties(vendas, this);
     }
 }

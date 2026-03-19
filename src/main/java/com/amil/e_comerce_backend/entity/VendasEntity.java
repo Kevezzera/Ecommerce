@@ -1,6 +1,6 @@
 package com.amil.e_comerce_backend.entity;
 
-import com.amil.e_comerce_backend.DTO.VendasDTO;
+import com.amil.e_comerce_backend.dto.VendasDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +9,6 @@ import org.springframework.beans.BeanUtils;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.List;
 
 @Entity
 @Setter
@@ -28,7 +27,7 @@ public class VendasEntity {
     @Column(nullable = false, length = (50))
     private String status;
 
-    private VendasEntity(VendasDTO vendas){
+    public VendasEntity(VendasDTO vendas){
         BeanUtils.copyProperties(vendas, this);
     }
 

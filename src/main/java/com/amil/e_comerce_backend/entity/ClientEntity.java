@@ -1,6 +1,6 @@
 package com.amil.e_comerce_backend.entity;
 
-import com.amil.e_comerce_backend.DTO.ClientDTO;
+import com.amil.e_comerce_backend.dto.ClientDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,7 +35,7 @@ public class ClientEntity {
     @Column(nullable = false, length = (20))
     private LocalDate nascimento;
 
-    private ClientEntity (ClientDTO client){
+    public ClientEntity (ClientDTO client){
         BeanUtils.copyProperties(client, this);
     }
 

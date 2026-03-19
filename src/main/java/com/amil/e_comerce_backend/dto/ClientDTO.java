@@ -1,4 +1,4 @@
-package com.amil.e_comerce_backend.DTO;
+package com.amil.e_comerce_backend.dto;
 
 import com.amil.e_comerce_backend.entity.ClientEntity;
 import lombok.Getter;
@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.BeanUtils;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -19,9 +20,9 @@ public class ClientDTO {
     private String cpf;
     private String password;
     private String cell;
-    private Date nascimento;
+    private LocalDate nascimento;
 
-    private ClientDTO (ClientEntity client){
+    public ClientDTO (ClientEntity client){
         BeanUtils.copyProperties(client, this);
     }
 }
