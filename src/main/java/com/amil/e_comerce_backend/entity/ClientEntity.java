@@ -20,26 +20,30 @@ public class ClientEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false, length = (150))
+
+    @Column(nullable = false)
     private String firstName;
-    @Column(nullable = false, length = (150))
+
+    @Column(nullable = false)
     private String lastName;
-    @Column(nullable = false, length = (20))
+
+    @Column(nullable = false, unique = true)
     private String login;
-    @Column(nullable = false, length = (11))
+
+    @Column(nullable = false, unique = true)
     private String cpf;
-    @Column(nullable = false, length = (100))
+
+    @Column(nullable = false)
     private String password;
-    @Column(nullable = false, length = (20))
+
+    @Column(nullable = false)
     private String cell;
-    @Column(nullable = false, length = (20))
+
+    @Column(nullable = false)
     private LocalDate nascimento;
 
     public ClientEntity (ClientDTO client){
         BeanUtils.copyProperties(client, this);
     }
 
-    //LIGACOES
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<VendasEntity> vendas;
 }

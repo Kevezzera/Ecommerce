@@ -1,24 +1,23 @@
 package com.amil.e_comerce_backend.controller;
 
 
-import com.amil.e_comerce_backend.dto.ClientDTO;
-import com.amil.e_comerce_backend.servics.ClientService;
+import com.amil.e_comerce_backend.dto.ProductDTO;
+import com.amil.e_comerce_backend.servics.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequestMapping("/client")
+@RequestMapping("/product")
 @RestController
-public class ClientController {
+public class ProductController {
 
     @Autowired
-    private ClientService clientService;
+    private ProductService productService;
 
     @PostMapping
-    public void insert(@RequestBody ClientDTO client){
-        clientService.insert(client);
+    public void insert(@RequestBody ProductDTO productDTO){
+        productService.insert(productDTO);
     }
-
 }

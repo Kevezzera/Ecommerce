@@ -1,15 +1,24 @@
 package com.amil.e_comerce_backend.dto;
 
+import com.amil.e_comerce_backend.entity.ProductEntity;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.beans.BeanUtils;
 
+@Getter
+@Setter
+@NoArgsConstructor
 public class ProductDTO {
     private Long id;
     private String name;
+    private int quantity;
     private double value;
-    private double resaleValue;
-    private String descripition;
+    private double resale_value;
+    private String description;
 
-    public ProductDTO(com.amil.e_comerce_backend.entity.ProductEntity product){
+
+    public ProductDTO(ProductEntity product){
         BeanUtils.copyProperties(product, this);
     }
 
