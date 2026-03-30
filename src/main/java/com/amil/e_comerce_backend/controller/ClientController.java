@@ -2,6 +2,7 @@ package com.amil.e_comerce_backend.controller;
 
 
 import com.amil.e_comerce_backend.dto.ClientDTO;
+import com.amil.e_comerce_backend.entity.ClientEntity;
 import com.amil.e_comerce_backend.servics.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -37,6 +38,21 @@ public class ClientController {
     public void delite(@PathVariable Long id){
         clientService.delite(id);
     }
+
+    @GetMapping("/{id}")
+    public ClientEntity buscarId(@PathVariable Long id){
+        return clientService.buscarId(id);
+    }
+
+//    @GetMapping("/findById/{id}")
+//    public ResponseEntity<Carro> findById(@PathVariable long id){
+//        try {
+//            Carro carro = this.carroService.findById(id);
+//            return new ResponseEntity<>(carro, HttpStatus.CREATED);
+//        } catch (Exception e) {
+//            return new ResponseEntity<>((HttpHeaders) null, HttpStatus.BAD_REQUEST);
+//        }
+//    }
 
 //    @DeleteMapping("/delet/{id}")
 //    public ResponseEntity<String> delete(@PathVariable long id){

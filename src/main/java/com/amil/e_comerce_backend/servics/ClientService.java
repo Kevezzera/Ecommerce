@@ -31,13 +31,18 @@ public class ClientService {
     }
 
     public void delite(Long id){
-        ClientEntity client = clientRepository.findById(id).get();
-        clientRepository.delete(client);
+        clientRepository.deleteById(id);
     }
 
-//    public String delete(long id){
-//        this.carroRepository.deleteById(id);
-//        return "Carro deletado";
+    public ClientEntity buscarId(Long id){
+        ClientEntity client = clientRepository.findById(id).get();
+        return client;
+    }
+
+//    public Carro findById(long id){
+//        Carro carro = this.carroRepository.findById(id).get();
+//        return carro;
 //    }
+
 
 }
