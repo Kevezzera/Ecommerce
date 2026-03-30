@@ -25,9 +25,11 @@ public class ClientService {
         return cliente.stream().map(ClientDTO::new).toList();
     }
 
-//    public List<UsuarioDto> listAll(){
-//        List<UsuarioEntity> usuario = usuarioRepository.findAll();
-//        return usuario.stream().map(UsuarioDto::new).toList();
-//    }
+    public ClientDTO edit(ClientDTO clientDTO){
+        ClientEntity client = new ClientEntity(clientDTO);
+        return new ClientDTO(clientRepository.save(client));
+    }
+
+
 
 }

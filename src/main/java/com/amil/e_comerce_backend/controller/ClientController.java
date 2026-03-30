@@ -25,4 +25,10 @@ public class ClientController {
         return clientService.listar();
     }
 
+    @PutMapping
+    public ClientDTO edit(@RequestBody ClientDTO clientDTO){
+        return clientService.edit(clientDTO);
+    }
+
+
 }
