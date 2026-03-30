@@ -4,6 +4,9 @@ package com.amil.e_comerce_backend.controller;
 import com.amil.e_comerce_backend.dto.ClientDTO;
 import com.amil.e_comerce_backend.servics.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,5 +33,19 @@ public class ClientController {
         return clientService.edit(clientDTO);
     }
 
+    @DeleteMapping("/{id}")
+    public void delite(@PathVariable Long id){
+        clientService.delite(id);
+    }
+
+//    @DeleteMapping("/delet/{id}")
+//    public ResponseEntity<String> delete(@PathVariable long id){
+//        try {
+//            String mensagem = this.carroService.delete(id);
+//            return new ResponseEntity<>(mensagem, HttpStatus.OK);
+//        } catch (Exception e) {
+//            return new ResponseEntity<>((HttpHeaders) null, HttpStatus.BAD_REQUEST);
+//        }
+//    }
 
 }

@@ -30,6 +30,14 @@ public class ClientService {
         return new ClientDTO(clientRepository.save(client));
     }
 
+    public void delite(Long id){
+        ClientEntity client = clientRepository.findById(id).get();
+        clientRepository.delete(client);
+    }
 
+//    public String delete(long id){
+//        this.carroRepository.deleteById(id);
+//        return "Carro deletado";
+//    }
 
 }
