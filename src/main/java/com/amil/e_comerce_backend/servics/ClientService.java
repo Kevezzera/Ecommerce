@@ -39,10 +39,9 @@ public class ClientService {
         return client;
     }
 
-//    public Carro findById(long id){
-//        Carro carro = this.carroRepository.findById(id).get();
-//        return carro;
-//    }
+    public List<ClientEntity> findByfirstName(String firstName){
+        return clientRepository.findByFirstName(firstName);
+    }
 
 
 }

@@ -20,48 +20,33 @@ public class ClientController {
     private ClientService clientService;
 
     @PostMapping
-    public void insert(@RequestBody ClientDTO client){
+    public void insertClient(@RequestBody ClientDTO client) {
         clientService.insert(client);
     }
 
     @GetMapping
-    public List<ClientDTO> listar(){
+    public List<ClientDTO> findAllClient() {
         return clientService.listar();
     }
 
     @PutMapping
-    public ClientDTO edit(@RequestBody ClientDTO clientDTO){
+    public ClientDTO editClient(@RequestBody ClientDTO clientDTO) {
         return clientService.edit(clientDTO);
     }
 
     @DeleteMapping("/{id}")
-    public void delite(@PathVariable Long id){
+    public void deleteClient(@PathVariable Long id) {
         clientService.delite(id);
     }
 
     @GetMapping("/{id}")
-    public ClientEntity buscarId(@PathVariable Long id){
+    public ClientEntity findByIdClient(@PathVariable Long id) {
         return clientService.buscarId(id);
     }
 
-//    @GetMapping("/findById/{id}")
-//    public ResponseEntity<Carro> findById(@PathVariable long id){
-//        try {
-//            Carro carro = this.carroService.findById(id);
-//            return new ResponseEntity<>(carro, HttpStatus.CREATED);
-//        } catch (Exception e) {
-//            return new ResponseEntity<>((HttpHeaders) null, HttpStatus.BAD_REQUEST);
-//        }
-//    }
-
-//    @DeleteMapping("/delet/{id}")
-//    public ResponseEntity<String> delete(@PathVariable long id){
-//        try {
-//            String mensagem = this.carroService.delete(id);
-//            return new ResponseEntity<>(mensagem, HttpStatus.OK);
-//        } catch (Exception e) {
-//            return new ResponseEntity<>((HttpHeaders) null, HttpStatus.BAD_REQUEST);
-//        }
-//    }
+    @GetMapping("/findByName")
+    public List<ClientEntity> findByNameClient(@RequestParam String firstName){
+        return clientService.findByfirstName(firstName);
+    }
 
 }
