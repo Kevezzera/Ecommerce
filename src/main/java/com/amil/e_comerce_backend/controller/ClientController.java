@@ -26,7 +26,7 @@ public class ClientController {
 
     @GetMapping
     public List<ClientDTO> findAllClient() {
-        return clientService.listar();
+        return clientService.findByAll();
     }
 
     @PutMapping
@@ -36,17 +36,17 @@ public class ClientController {
 
     @DeleteMapping("/{id}")
     public void deleteClient(@PathVariable Long id) {
-        clientService.delite(id);
+        clientService.delete(id);
     }
 
     @GetMapping("/{id}")
-    public ClientEntity findByIdClient(@PathVariable Long id) {
-        return clientService.buscarId(id);
+    public ClientDTO findByIdClient(@PathVariable Long id) {
+        return clientService.findById(id);
     }
 
     @GetMapping("/findByName")
-    public List<ClientEntity> findByNameClient(@RequestParam String firstName){
-        return clientService.findByfirstName(firstName);
+    public List<ClientDTO> findByNameClient(@RequestParam String firstName){
+        return clientService.findByName(firstName);
     }
 
 }

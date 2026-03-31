@@ -15,14 +15,13 @@ public class ClientService {
     private ClientRepository clientRepository;
 
     public void insert(ClientDTO clientDTO){
-
         ClientEntity client = new ClientEntity(clientDTO);
         clientRepository.save(client);
     }
 
-    public List<ClientDTO> listar(){
-        List<ClientEntity> cliente = clientRepository.findAll();
-        return cliente.stream().map(ClientDTO::new).toList();
+    public List<ClientDTO> findByAll(){
+        List<ClientEntity> client = clientRepository.findAll();
+        return client.stream().map(ClientDTO::new).toList();
     }
 
     public ClientDTO edit(ClientDTO clientDTO){
@@ -30,18 +29,22 @@ public class ClientService {
         return new ClientDTO(clientRepository.save(client));
     }
 
-    public void delite(Long id){
+    public void delete(Long id){
         clientRepository.deleteById(id);
     }
 
-    public ClientEntity buscarId(Long id){
+    public ClientDTO findById(Long id){
         ClientEntity client = clientRepository.findById(id).get();
-        return client;
+        return new ClientDTO(client);
     }
 
-    public List<ClientEntity> findByfirstName(String firstName){
-        return clientRepository.findByFirstName(firstName);
+    public List<ClientDTO> findByName(String firstName){
+        List<ClientEntity> client = clientRepository.findByFirstNameContaining(firstName);
+        return client.stream().map(ClientDTO::new).toList();
     }
 
+//    cliente.stream()             // transforma a lista em um fluxo
+//    .map(ClientDTO::new)         // para cada ClientEntity, cria um ClientDTO usando o construtor
+//    .toList();                   // volta a ser uma lista de ClientDTO
 
 }

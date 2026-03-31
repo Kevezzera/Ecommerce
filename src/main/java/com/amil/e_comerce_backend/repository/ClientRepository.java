@@ -7,7 +7,23 @@ import java.util.List;
 
 public interface ClientRepository extends JpaRepository<ClientEntity, Long> {
 
-//    public List<ClientEntity> findByfirstName(String firstName);
-    public List<ClientEntity> findByFirstName(String firstName);
+    public List<ClientEntity> findByFirstNameContaining(String firstName);
+
+
+
+
+
+//        // Busca exata pelo primeiro nome
+//        List<Person> findByFirstName(String firstName);
+//
+//        // Busca ignorando maiúsculas/minúsculas
+//        List<Person> findByFirstNameIgnoreCase(String firstName);
+//
+//        // Busca por nomes que começam com...
+//        List<Person> findByFirstNameStartingWith(String prefix);
+//
+//        // Busca por nomes que contenham...
+//        List<Person> findByFirstNameContaining(String fragment);
+
 
 }
