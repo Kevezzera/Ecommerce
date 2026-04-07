@@ -16,11 +16,10 @@ public class ProductDTO {
     private double value;
     private double resale_value;
     private String description;
-
+//  private String entrada;
 
     public ProductDTO(ProductEntity product){
         BeanUtils.copyProperties(product, this);
     }
-
 
 }
