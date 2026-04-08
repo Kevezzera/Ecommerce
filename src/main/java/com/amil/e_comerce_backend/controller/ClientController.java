@@ -19,32 +19,32 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
 
-    @PostMapping
+    @PostMapping("/insertClient")
     public void insertClient(@RequestBody ClientDTO client) {
         clientService.insert(client);
     }
 
-    @GetMapping
+    @GetMapping("/finfAllClient")
     public List<ClientDTO> findAllClient() {
         return clientService.findByAll();
     }
 
-    @PutMapping
+    @PutMapping("aditClient")
     public ClientDTO editClient(@RequestBody ClientDTO clientDTO) {
         return clientService.edit(clientDTO);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deliteClient/{id}")
     public void deleteClient(@PathVariable Long id) {
         clientService.delete(id);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/findByIdClient/{id}")
     public ClientDTO findByIdClient(@PathVariable Long id) {
         return clientService.findById(id);
     }
 
-    @GetMapping("/findByName")
+    @GetMapping("/findByNameClient/findByName")
     public List<ClientDTO> findByNameClient(@RequestParam String firstName){
         return clientService.findByName(firstName);
     }
