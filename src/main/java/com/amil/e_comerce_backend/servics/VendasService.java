@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @Service
 public class VendasService {
@@ -27,6 +28,13 @@ public class VendasService {
 
         VendasEntity vendasEntity = new VendasEntity(vendasDTO);
         vendasRepository.save(vendasEntity);
+    }
+
+    public List<VendasDTO> findByregistros(Long id){
+        List<VendasEntity> vendas = vendasRepository.findByClient_Id(id);
+        return  vendas.stream()
+                .map(VendasDTO::new) // supondo construtor AgendaDto(AgendaEntity e)
+                .toList();
     }
 
 }
