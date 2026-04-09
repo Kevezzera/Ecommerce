@@ -6,17 +6,20 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.BeanUtils;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @NoArgsConstructor
 public class ProductDTO {
     private Long id;
     private String name;
+    private String codgo;
     private int quantity;
     private double value;
     private double resale_value;
     private String description;
-//  private String entrada;
+    private LocalDate entrada;
 
     public ProductDTO(ProductEntity product){
         BeanUtils.copyProperties(product, this);

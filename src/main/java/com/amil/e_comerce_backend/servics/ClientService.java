@@ -14,9 +14,10 @@ public class ClientService {
     @Autowired
     private ClientRepository clientRepository;
 
-    public void insert(ClientDTO clientDTO){
+    public String insert(ClientDTO clientDTO){
         ClientEntity client = new ClientEntity(clientDTO);
         clientRepository.save(client);
+        return "SUCCESS!";
     }
 
     public List<ClientDTO> findByAll(){
@@ -29,8 +30,9 @@ public class ClientService {
         return new ClientDTO(clientRepository.save(client));
     }
 
-    public void delete(Long id){
+    public String delete(Long id){
         clientRepository.deleteById(id);
+        return "Registro deletado: ";
     }
 
     public ClientDTO findById(Long id){

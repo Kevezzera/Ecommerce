@@ -19,7 +19,7 @@ public class ClientDTO {
     private String cpf;
     private String password;
     private String cell;
-    private LocalDate nascimento;
+    private String nascimento;
 
     public ClientDTO (ClientEntity client){
         BeanUtils.copyProperties(client, this);

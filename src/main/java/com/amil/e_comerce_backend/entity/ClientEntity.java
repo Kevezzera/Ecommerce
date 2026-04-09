@@ -19,6 +19,7 @@ public class ClientEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, unique = true)
     private Long id;
 
     @Column(nullable = false)
@@ -40,7 +41,7 @@ public class ClientEntity {
     private String cell;
 
     @Column(nullable = false)
-    private LocalDate nascimento;
+    private String nascimento;
 
     public ClientEntity (ClientDTO client){
         BeanUtils.copyProperties(client, this);

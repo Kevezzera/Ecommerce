@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.BeanUtils;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Setter
@@ -23,6 +24,9 @@ public class ProductEntity {
     @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false, unique = true)
+    private String codgo;
+
     @Column(nullable = false)
     private int quantity;
 
@@ -34,6 +38,9 @@ public class ProductEntity {
 
     @Column(nullable = false)
     private String description;
+
+    @Column(nullable = false)
+    private LocalDate entrada;
 
     public ProductEntity(ProductDTO product){
             BeanUtils.copyProperties(product, this);

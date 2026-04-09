@@ -22,13 +22,10 @@ public class VendasEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(nullable = false)
     private LocalDate data;
-
     @Column(nullable = false)
     private LocalTime hora;
-
     @Column(nullable = false)
     private String status;
 
