@@ -4,6 +4,7 @@ package com.amil.e_comerce_backend.controller;
 import com.amil.e_comerce_backend.dto.ClientDTO;
 import com.amil.e_comerce_backend.entity.ClientEntity;
 import com.amil.e_comerce_backend.servics.ClientService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -20,33 +21,71 @@ public class ClientController {
     private ClientService clientService;
 
     @PostMapping("/insertClient")
-    public void insertClient(@RequestBody ClientDTO client) {
-        clientService.insert(client);
+    @Operation(summary = "Cadastrar novo cliente", description = "Cadastre um novo cliente.")
+    public ResponseEntity<String> insertClient(@RequestBody ClientDTO client) {
+        try {
+            String msg = clientService.insert(client);
+            return new ResponseEntity<>(msg, HttpStatus.OK);
+
+        }catch (Exception erro){
+            return new ResponseEntity<String>("Dados incorretos! ", HttpStatus.BAD_REQUEST);
+        }
+
     }
 
-    @GetMapping("/finfAllClient")
-    public List<ClientDTO> findAllClient() {
-        return clientService.findByAll();
+    @Operation(summary = "Exibir clientes.", description = "Exibe todos os clientes registrados.")
+    @ResponseStatus
+    @GetMapping("/findAllClient")
+    public ResponseEntity<List<ClientDTO>> findAllClient() {
+        try {
+            List<ClientDTO> lista =  clientService.findByAll();
+            return new ResponseEntity<>(lista, HttpStatus.OK);
+
+        }catch (Exception e){
+            return new ResponseEntity<>((HttpHeaders) null, HttpStatus.BAD_REQUEST);
+        }
     }
 
-    @PutMapping("aditClient")
-    public ClientDTO editClient(@RequestBody ClientDTO clientDTO) {
-        return clientService.edit(clientDTO);
+    @Operation(summary = "Editar cliente", description = "Edita dados do cliente.")
+    @PutMapping("/editClient")
+    public ResponseEntity<ClientDTO> editClient(@RequestBody ClientDTO clientDTO) {
+        try {
+             return new ResponseEntity<>(clientService.edit(clientDTO),HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
+    @Operation(summary = "Deleta cliente", description = "Deleta cliente pelo Id.")
     @DeleteMapping("/deliteClient/{id}")
-    public void deleteClient(@PathVariable Long id) {
-        clientService.delete(id);
+    public ResponseEntity<String> deleteClient(@PathVariable Long id) {
+        try {
+            String msg = clientService.delete(id);
+            return new ResponseEntity<>(msg, HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
+    @Operation(summary = "Buscar por Id", description = "Busca cliente pelo Id.")
     @GetMapping("/findByIdClient/{id}")
-    public ClientDTO findByIdClient(@PathVariable Long id) {
-        return clientService.findById(id);
+    public ResponseEntity<ClientDTO> findByIdClient(@PathVariable Long id) {
+        try {
+            ClientDTO client = clientService.findById(id);
+            return new ResponseEntity<>(client, HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
-    @GetMapping("/findByNameClient/findByName")
-    public List<ClientDTO> findByNameClient(@RequestParam String firstName){
-        return clientService.findByName(firstName);
+    @Operation(summary = "Buscar por nome", description = "Busca cliente pelo nome.")
+    @GetMapping("/findByNameClient")
+    public ResponseEntity<List<ClientDTO>> findByNameClient(@RequestParam String firstName){
+        try {
+            List<ClientDTO> clients = clientService.findByName(firstName);
+            return new ResponseEntity<>(clients, HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>((HttpHeaders) null, HttpStatus.BAD_REQUEST);
+        }
     }
-
 }
