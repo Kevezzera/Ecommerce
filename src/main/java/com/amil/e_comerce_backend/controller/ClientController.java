@@ -5,14 +5,17 @@ import com.amil.e_comerce_backend.dto.ClientDTO;
 import com.amil.e_comerce_backend.entity.ClientEntity;
 import com.amil.e_comerce_backend.servics.ClientService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.List;
 
+@Tag(name = "Clientes", description = "Gerenciamento do registro de clientes")
 @RequestMapping("/client")
 @RestController
 public class ClientController {
@@ -48,11 +51,11 @@ public class ClientController {
 
     @Operation(summary = "Editar cliente", description = "Edita dados do cliente.")
     @PutMapping("/editClient")
-    public ResponseEntity<ClientDTO> editClient(@RequestBody ClientDTO clientDTO) {
+    public ResponseEntity<?> editClient(@RequestBody ClientDTO clientDTO) {
         try {
              return new ResponseEntity<>(clientService.edit(clientDTO),HttpStatus.OK);
         }catch (Exception e){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("ERRO of requisition!");
         }
     }
 
@@ -63,7 +66,7 @@ public class ClientController {
             String msg = clientService.delete(id);
             return new ResponseEntity<>(msg, HttpStatus.OK);
         }catch (Exception e){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("ERRO de requisição!");
         }
     }
 
@@ -80,12 +83,12 @@ public class ClientController {
 
     @Operation(summary = "Buscar por nome", description = "Busca cliente pelo nome.")
     @GetMapping("/findByNameClient")
-    public ResponseEntity<List<ClientDTO>> findByNameClient(@RequestParam String firstName){
+    public ResponseEntity<?> findByNameClient(@RequestParam String firstName){
         try {
             List<ClientDTO> clients = clientService.findByName(firstName);
             return new ResponseEntity<>(clients, HttpStatus.OK);
-        }catch (Exception e){
-            return new ResponseEntity<>((HttpHeaders) null, HttpStatus.BAD_REQUEST);
+        }catch (HttpClientErrorException.NotFound e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Not found!");
         }
     }
 }
