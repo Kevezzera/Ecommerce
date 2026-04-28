@@ -2,6 +2,8 @@ package com.amil.e_comerce_backend.entity;
 
 import com.amil.e_comerce_backend.dto.ProductDTO;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

@@ -17,6 +17,7 @@ public class VendasDTO {
     private LocalDate data;
     private LocalTime hora;
     private String status;
+    private int quantProdut;
     private ClientDTO clientDTO;
     private ProductDTO productDTO;
 

@@ -1,6 +1,8 @@
 package com.amil.e_comerce_backend.dto;
 
 import com.amil.e_comerce_backend.entity.ClientEntity;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,6 +15,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class ClientDTO {
     private Long id;
+
+    @NotNull
     private String firstName;
     private String lastName;
     private String login;

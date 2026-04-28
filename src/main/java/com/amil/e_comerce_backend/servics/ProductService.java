@@ -47,4 +47,9 @@ public class ProductService {
         return product.stream().map(ProductDTO::new).toList();
     }
 
+    public List<ProductDTO> findByAtribut(String name){
+        List<ProductEntity> product = productRepository.buscarPorQualquerAtributo(name);
+        return product.stream().map(ProductDTO::new).toList();
+    }
+
 }

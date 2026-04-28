@@ -6,6 +6,7 @@ import com.amil.e_comerce_backend.entity.ClientEntity;
 import com.amil.e_comerce_backend.servics.ClientService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -25,14 +26,9 @@ public class ClientController {
 
     @PostMapping("/insertClient")
     @Operation(summary = "Cadastrar novo cliente", description = "Cadastre um novo cliente.")
-    public ResponseEntity<String> insertClient(@RequestBody ClientDTO client) {
-        try {
+    public ResponseEntity<String> insertClient(@Valid @RequestBody ClientDTO client) {
             String msg = clientService.insert(client);
             return new ResponseEntity<>(msg, HttpStatus.OK);
-
-        }catch (Exception erro){
-            return new ResponseEntity<String>("Dados incorretos! ", HttpStatus.BAD_REQUEST);
-        }
 
     }
 

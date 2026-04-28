@@ -7,5 +7,4 @@ import java.util.List;
 
 public interface VendasRepository extends JpaRepository<VendasEntity, Long> {
 
-    List<VendasEntity> findByClient_Id(Long id);
 }

@@ -28,6 +28,8 @@ public class VendasEntity {
     private LocalTime hora;
     @Column(nullable = false)
     private String status;
+    @Column(nullable = false)
+    private int quantProdut;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
